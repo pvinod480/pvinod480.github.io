@@ -1,0 +1,206 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    color: black; /* Set default font color to black */
+  }
+  
+  .title {
+    margin-top: 20px;
+    color: #fff;
+    font-size: 2.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Create Task Button */
+  .create-task-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 15px 30px;
+    background-color: #ff5c5c;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .create-task-btn:hover {
+    background-color: #ff8585;
+    transform: scale(1.1);
+  }
+  
+  /* Locking Quadrants when modal is open */
+  .locked {
+    pointer-events: none; /* Disable interaction */
+    opacity: 0.5; /* Slightly fade the quadrants */
+  }
+  
+  /* Matrix Layout */
+  .matrix {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 90%;
+    max-width: 1000px;
+    margin-top: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    color: white;
+    transition: transform 0.2s;
+    min-height: 200px; /* Ensures all quadrants have a minimum height */
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Adjusted Background Colors for Better Contrast */
+  .urgent-important { background: linear-gradient(135deg, #ff4e50, #f9d423); }
+  .not-urgent-important { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
+  .urgent-not-important { background: linear-gradient(135deg, #fc5c7d, #6a82fb); }
+  .not-urgent-not-important { background: linear-gradient(135deg, #56ab2f, #a8e063); }
+  
+  /* Task List Styling */
+  .task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 150px; /* Max height for better layout */
+    overflow-y: auto;
+  }
+  
+  .task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-weight: bold;
+    color: white; /* Ensure visibility on darker backgrounds */
+  }
+  
+  .task span {
+    font-size: 1.1rem;
+  }
+  
+  .task .dates {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Delete Button */
+  .delete-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ff4e50;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #ff4e50;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .delete-btn:hover {
+    transform: scale(1.5);
+    background-color: #f9d423;
+    color: white;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px; /* Start position for sliding */
+    right: -300px; /* Off-screen position */
+    background: linear-gradient(to right, #ff5c5c, #f9d423);
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: right 0.5s ease; /* Smooth slide effect */
+    z-index: 1000; /* Make sure it's above everything else */
+  }
+  
+  .modal.show {
+    display: block; /* Show the modal */
+    right: 20px; /* Final position on screen */
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .modal-content h2 {
+    text-align: center;
+    color: #fff;
+  }
+  
+  /* Input and Button Styles */
+  .modal input, .modal select {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .modal input::placeholder,
+  .modal select {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* New Placeholders for input fields */
+  .modal input::placeholder {
+    color: rgba(0, 0, 0, 0.7); /* Black placeholder text */
+  }
+  
+  .modal .submit-btn {
+    padding: 10px;
+    background-color: #ff4e50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .modal .submit-btn:hover {
+    background-color: #ff8585;
+  }
+  
+  .modal .close-btn {
+    padding: 10px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .modal .close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Eisenhower Matrix</title>
+</head>
+<body>
+    <h1 class="title">Eisenhower Matrix</h1>
+    <button class="create-task-btn" onclick="toggleModal()">Create Task</button>
+    
+    <div class="matrix">
+        <div class="card urgent-important">
+            <h2>Do Now</h2>
+            <div id="list-do-now" class="task-list"></div>
+        </div>
+        <div class="card not-urgent-important">
+            <h2>Schedule</h2>
+            <div id="list-schedule" class="task-list"></div>
+        </div>
+        <div class="card urgent-not-important">
+            <h2>Delegate</h2>
+            <div id="list-delegate" class="task-list"></div>
+        </div>
+        <div class="card not-urgent-not-important">
+            <h2>Don't Do</h2>
+            <div id="list-dont-do" class="task-list"></div>
+        </div>
+    </div>
+
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <h2>Create Task</h2>
+            <input type="text" id="task-input" placeholder="Task Name">
+            <select id="quadrant-select" placeholder = "Select Quad">
+                <option value="do-now">Do Now</option>
+                <option value="schedule">Schedule</option>
+                <option value="delegate">Delegate</option>
+                <option value="dont-do">Don't Do</option>
+            </select>
+            <input type="date" id="due-date" placeholder="Due Date">
+            <button class="submit-btn" onclick="createTask()">Add Task</button>
+            <button class="close-btn" onclick="toggleModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
